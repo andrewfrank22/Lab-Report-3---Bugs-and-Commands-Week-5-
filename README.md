@@ -81,8 +81,13 @@ So, given [1,2,3,4,5]
    > find ./technical -name "*.txt"
 
    This will output all files with a .txt extension in the ./technical directory and it's subdirectories.
+
+   Example 2:
+   > find ./technical -name "config*"
+
+   This will find all files that start with "config" in the techhnical directory; does not worry about the extension.
    
-2) *-mtime: Allows you to find  files in a directory based on the last time they were modified*
+3) *-mtime: Allows you to find  files in a directory based on the last time they were modified*
    Example 1:
    > find ./technical -mtime -10
 
@@ -93,7 +98,7 @@ So, given [1,2,3,4,5]
    
    This will find all files that have been modified MORE THAN 30 days ago in the ./technical directory.
    
-3) *-size: Allows you to find files in a directory based off size.*
+4) *-size: Allows you to find files in a directory based off size.*
    Example 1:
    > find ./technical -size -500k
    
@@ -104,7 +109,7 @@ So, given [1,2,3,4,5]
    
    This will find files BIGGER than 1 gigabyte in the ./technical directory.
 
-4) *-delete: Allows you to delete files or directories;.*
+5) *-delete: Allows you to delete files or directories;.*
    Example 1:
    > find ./technical -name "*.txt" -delete
 
