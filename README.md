@@ -61,3 +61,12 @@ The original buggy code does not appropriately reverse an array. For example, gi
 instead of
 
 > [4,3,2,1]
+
+The fixed code ensures that the second half of the code is taken care of properly. It changes the first and the last position of the array, the second in the list and the second to last in the list until it reaches the middle. We ensure the already flipped position doesn't get flipped again by 
+> i < j
+
+So, given [1,2,3,4,5]
+> 1) [5,2,3,4,1] 1st flip (switches index 0 and index 4)
+> 2) [5,4,3,2,1](switches index 1 and index 3)
+> 3) No switch can't switch as we would do index 2 and 2 and anything else would do index
+> j < i
