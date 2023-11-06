@@ -71,7 +71,7 @@ So, given [1,2,3,4,5]
 > 3) No switch can't switch as we would do index 2 and 2 and anything else would do index
 > j < i
 
-## Part 2 - Researching Commands\
+## Part 2 - Researching Commands
 ### 'Find' Command
 **I searched "find command-line options" and found. I used the same source for all.**
 **Source: https://man7.org/linux/man-pages/man1/find.1.html**
