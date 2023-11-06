@@ -2,11 +2,11 @@
 ## Part 1 - Bugs
 
 ### A failure-inducing input for the buggy program, as a JUnit test and any associated code
-@Test
-  public void testReverseInPlaceFailure() {
-    int[] input = {1, 2, 3, 4};
-    ArrayExamples.reverseInPlace(input);
-    assertArrayEquals(new int[]{4, 3, 2, 1}, input);
+  > @Test
+  > public void testReverseInPlaceFailure() {
+  >  int[] input = {1, 2, 3, 4};
+  >  ArrayExamples.reverseInPlace(input);
+  >  assertArrayEquals(new int[]{4, 3, 2, 1}, input);
   }
 
 ### An input that doesn’t induce a failure, as a JUnit test and any associated code
