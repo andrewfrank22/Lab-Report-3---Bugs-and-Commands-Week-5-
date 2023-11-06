@@ -77,6 +77,7 @@ So, given [1,2,3,4,5]
 **Source: https://man7.org/linux/man-pages/man1/find.1.html**
 
 1) *-name: Allows you to find files in a directory by matching a inputed text pattern*
+
    Example 1:
    > find ./technical -name "*.txt"
 
@@ -88,6 +89,7 @@ So, given [1,2,3,4,5]
    This will find all files that start with "config" in the techhnical directory; does not worry about the extension.
    
 3) *-mtime: Allows you to find  files in a directory based on the last time they were modified*
+
    Example 1:
    > find ./technical -mtime -10
 
@@ -98,7 +100,8 @@ So, given [1,2,3,4,5]
    
    This will find all files that have been modified MORE THAN 30 days ago in the ./technical directory.
    
-4) *-size: Allows you to find files in a directory based off size.*
+5) *-size: Allows you to find files in a directory based off size.*
+
    Example 1:
    > find ./technical -size -500k
    
@@ -109,7 +112,8 @@ So, given [1,2,3,4,5]
    
    This will find files BIGGER than 1 gigabyte in the ./technical directory.
 
-5) *-delete: Allows you to delete files or directories;.*
+6) *-delete: Allows you to delete files or directories;.*
+
    Example 1:
    > find ./technical -name "*.txt" -delete
 
