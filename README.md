@@ -9,9 +9,10 @@
   ArrayExamples.reverseInPlace(input);
   assertArrayEquals(new int[]{4, 3, 2, 1}, input);
 }
-
+```
 
 ### An input that doesn’t induce a failure, as a JUnit test and any associated code
+
 ```
 @Test
 public void testReverseInPlaceNoFailure() {
@@ -19,7 +20,7 @@ public void testReverseInPlaceNoFailure() {
   ArrayExamples.reverseInPlace(input);
   assertArrayEquals(new int[]{1}, input);
 }
-
+```
 
 ### The symptom, as the output of running the tests
 Output of Running the Failed Test:
