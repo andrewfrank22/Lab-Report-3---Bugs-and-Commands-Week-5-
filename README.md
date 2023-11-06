@@ -38,6 +38,7 @@ static void reverseInPlace(int[] arr) {
     arr[i] = arr[arr.length - i - 1];
   }
 }
+```
 
 ```
 // Changes the input array to be in reversed order
