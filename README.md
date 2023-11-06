@@ -57,5 +57,7 @@ static void reverseInPlace(int[] arr) {
 ###  Briefly describe why the fix addresses the issue
 The original buggy code does not appropriately reverse an array. For example, given a an array with size 4, [1,2,3,4], it reverses the first half without a problem, but when it tries to change the second half it will pull the numbers that already changed not the output we actually want. This results in the output 
 > [4,3,3,4]
+
 instead of
+
 > [4,3,2,1]
