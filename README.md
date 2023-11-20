@@ -82,11 +82,15 @@ So, given [1,2,3,4,5]
    > find ./technical -name "*.txt"
 
    This will output all files with a .txt extension in the ./technical directory and it's subdirectories.
+   
+  ![Image](ex1.png)  
 
    Example 2:
    > find ./technical -name "chapter*"
 
    This will find all files that start with "chapter" in the techhnical directory; does not worry about the extension.
+
+   ![Image](ex2.png)
    
 3) *-mtime: Allows you to find  files in a directory based on the last time they were modified*
 
@@ -94,11 +98,15 @@ So, given [1,2,3,4,5]
    > find ./technical -mtime -10
 
    This will find all files that have been modified in the last 10 days in the ./technical directory.
-
+   
+  ![Image](ex4.png)  
+  
    Example 2:
    > find ./technical -mtime +30
    
    This will find all files that have been modified MORE THAN 30 days ago in the ./technical directory.
+   
+   ![Image](ex5.png)  
    
 5) *-size: Allows you to find files in a directory based off size.*
 
@@ -107,23 +115,29 @@ So, given [1,2,3,4,5]
    
    This will find files SMALLER than 500 kilobytes in the ./technical directory.
 
+   ![Image](ex6.png)  
+
    Example 2:
    > find . -size +1G
    
    This will find files BIGGER than 1 gigabyte in the ./technical directory.
 
-6) *-delete: Allows you to delete files or directories;.*
+   ![Image](ex7.png)  
+
+7) *-delete: Allows you to delete files or directories;.*
 
    Example 1:
    > find ./technical -name "*.txt" -delete
 
    This will delete all files with the .txt extension in the ./technical directory.
+   
+![Image](ex8.png)  
 
    Example 2: 
    > find ./technical -name "*.log" -mtime +7 -delete
 
    This will delete all files with the .log extension in the ./technical directory.
-              
+    ![Image](ex9.png)          
 
 
 
