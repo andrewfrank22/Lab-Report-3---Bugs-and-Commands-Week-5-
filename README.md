@@ -84,9 +84,9 @@ So, given [1,2,3,4,5]
    This will output all files with a .txt extension in the ./technical directory and it's subdirectories.
 
    Example 2:
-   > find ./technical -name "config*"
+   > find ./technical -name "chapter*"
 
-   This will find all files that start with "config" in the techhnical directory; does not worry about the extension.
+   This will find all files that start with "chapter" in the techhnical directory; does not worry about the extension.
    
 3) *-mtime: Allows you to find  files in a directory based on the last time they were modified*
 
