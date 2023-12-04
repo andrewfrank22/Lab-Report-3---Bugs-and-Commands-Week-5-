@@ -2,7 +2,7 @@
 
 ## Part 1 – Debugging Scenario
 
-1) #### Original Post from Student
+####  1) Original Post from Student
 Title: Compiling Issue 
 
 Hi all,
@@ -12,7 +12,7 @@ Here's the screenshot of the terminal showing the compilation error:
 
 ![Image](1lab5.png)
 
-2) #### Response from a TA
+#### 2) Response from a TA
    
 Hello,
 
@@ -22,7 +22,7 @@ The error message suggests there might be an issue with how the script is locati
 
 This will find any java files in your directory, after finding this we can find out if you are providing the file in the correct format which seems to be the issue here. You should find "ListExamples.java".
 
-3) #### Student's response:
+#### 3) Student's response:
    
  I ran the find command in the student-submission directory, and here's the output:
 
@@ -30,7 +30,7 @@ This will find any java files in your directory, after finding this we can find 
 
    I realized my file was called ListExample.java, without the "s". Thank you for very much this worked.
 
-5) - The file & directory structure needed:
+ - The file & directory structure needed:
      
         directory needed: student-submission/ListExamples.java
 
