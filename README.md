@@ -1,146 +1,173 @@
-# Lab-Report-3---Bugs-and-Commands-Week-5-
-## Part 1 - Bugs
+# Lab Report 5 - Putting it All Together (Week 9)
 
-### A failure-inducing input for the buggy program, as a JUnit test and any associated code
-```
-@Test
-  public void testReverseInPlaceFailure() {
-  int[] input = {1, 2, 3, 4};
-  ArrayExamples.reverseInPlace(input);
-  assertArrayEquals(new int[]{4, 3, 2, 1}, input);
-}
-```
+## Part 1 – Debugging Scenario
 
-### An input that doesn’t induce a failure, as a JUnit test and any associated code
+1) #### Original Post from Student
+Title: Compiling Issue 
 
-```
-@Test
-public void testReverseInPlaceNoFailure() {
-  int[] input = {1};
-  ArrayExamples.reverseInPlace(input);
-  assertArrayEquals(new int[]{1}, input);
-}
-```
+Hi all,
 
-### The symptom, as the output of running the tests
-Output of Running the Failed Test:
-![Image](TestFailLab3.png)
+I am working on this weeks Programming Assignement for ListExamples.java, but it's failing to compile, I don't think the issue has to do with my actual code because I other TAs helped me with the code. Based off the message I think it has to do with the filepath or the directory but I am not sure.
+Here's the screenshot of the terminal showing the compilation error:
 
-Output of Running Passed Test:
-![Image](TestPassLab3.png)
+![Image](1lab5.png)
 
-### The bug, as the before-and-after code change required to fix it
-
-```
-// Changes the input array to be in reversed order
-//Original Buggy Code
-static void reverseInPlace(int[] arr) {
-  for(int i = 0; i < arr.length; i++) {
-    arr[i] = arr[arr.length - i - 1];
-  }
-}
-```
-
-```
-// Changes the input array to be in reversed order
-//Fixed Code
-static void reverseInPlace(int[] arr) {
-    int j = arr.length - 1;
-    for(int i = 0; i < j; i++) {
-      int temp = arr[i]; // Use 'temp' or another name that indicates a single value
-      arr[i] = arr[j];
-      arr[j] = temp;
-      j--;
-    }
-  }
-```
-###  Briefly describe why the fix addresses the issue
-The original buggy code does not appropriately reverse an array. For example, given a an array with size 4, [1,2,3,4], it reverses the first half without a problem, but when it tries to change the second half it will pull the numbers that already changed not the output we actually want. This results in the output 
-> [4,3,3,4]
-
-instead of
-
-> [4,3,2,1]
-
-The fixed code ensures that the second half of the code is taken care of properly. It changes the first and the last position of the array, the second in the list and the second to last in the list until it reaches the middle. We ensure the already flipped position doesn't get flipped again by 
-> i < j
-
-So, given [1,2,3,4,5]
-> 1) [5,2,3,4,1] 1st flip (switches index 0 and index 4)
-> 2) [5,4,3,2,1](switches index 1 and index 3)
-> 3) No switch can't switch as we would do index 2 and 2 and anything else would do index
-> j < i
-
-## Part 2 - Researching Commands
-### 'Find' Command
-**I searched "find command-line options" and found. I used the same source for all.**
-**Source: https://man7.org/linux/man-pages/man1/find.1.html**
-
-1) *-name: Allows you to find files in a directory by matching a inputed text pattern*
-
-   Example 1:
-   > find ./technical -name "*.txt"
-
-   This will output all files with a .txt extension in the ./technical directory and it's subdirectories.
+2) ### Response from a TA
    
-  ![Image](ex1.png)  
+Hello,
 
-   Example 2:
-   > find ./technical -name "chapter*"
+The error message suggests there might be an issue with how the script is locating or compiling the ListExamples.java file. To better understand what's happening, could you please run the following command in your student-submission directory and share the output? This will help us see the exact structure and location of the ListExamples.java file.
 
-   This will find all files that start with "chapter" in the techhnical directory; does not worry about the extension.
+``` find student-submission/ -name "*.java" ```
 
-   ![Image](ex2.png)
+This will find any java files in your directory, after finding this we can find out if you are providing the file in the correct format which seems to be the issue here. You should find "ListExamples.java".
+
+3) ### Student's response:
    
-3) *-mtime: Allows you to find  files in a directory based on the last time they were modified*
+ I ran the find command in the student-submission directory, and here's the output:
 
-   Example 1:
-   > find ./technical -mtime -10
+![Image](2lab5.png)
 
-   This will find all files that have been modified in the last 10 days in the ./technical directory.
-   
-  ![Image](ex4.png)  
+   I realized my file was called ListExample.java, without the "s". Thank you for very much this worked.
+
+5) - The file & directory structure needed:
+     
+        directory needed: student-submission/ListExamples.java
+
+        file needed: ListExamples.java
   
-   Example 2:
-   > find ./technical -mtime +30
-   
-   This will find all files that have been modified MORE THAN 30 days ago in the ./technical directory.
-   
-   ![Image](ex5.png)  
-   
-5) *-size: Allows you to find files in a directory based off size.*
+   - The contents of each file before fixing the bug
 
-   Example 1:
-   > find ./technical -size -500k
-   
-   This will find files SMALLER than 500 kilobytes in the ./technical directory.
+# ListExample.java :
 
-   ![Image](ex6.png)  
+``` import java.util.ArrayList;
+import java.util.List;
 
-   Example 2:
-   > find . -size +1G
-   
-   This will find files BIGGER than 1 gigabyte in the ./technical directory.
+interface StringChecker { boolean checkString(String s); }
 
-   ![Image](ex7.png)  
+class ListExample {
 
-7) *-delete: Allows you to delete files or directories;.*
-
-   Example 1:
-   > find ./technical -name "*.txt" -delete
-
-   This will delete all files with the .txt extension in the ./technical directory.
-   
-![Image](ex8.png)  
-
-   Example 2: 
-   > find ./technical -name "*.log" -mtime +7 -delete
-
-   This will delete all files with the .log extension in the ./technical directory.
-    ![Image](ex9.png)          
+  // Returns a new list that has all the elements of the input list for which
+  // the StringChecker returns true, and not the elements that return false, in
+  // the same order they appeared in the input list;
+  static List<String> filter(List<String> list, StringChecker sc) {
+    List<String> result = new ArrayList<>();
+    for(String s: list) {
+      if(sc.checkString(s)) {
+        result.add(s);
+      }
+    }
+    return result;
+  }
 
 
+  // Takes two sorted list of strings (so "a" appears before "b" and so on),
+  // and return a new list that has all the strings in both list in sorted order.
+  static List<String> merge(List<String> list1, List<String> list2) {
+    List<String> result = new ArrayList<>();
+    int index1 = 0, index2 = 0;
+    while(index1 < list1.size() && index2 < list2.size()) {
+      if(list1.get(index1).compareTo(list2.get(index2)) < 0) {
+        result.add(list1.get(index1));
+        index1 += 1;
+      }
+      else {
+        result.add(list2.get(index2));
+        index2 += 1;
+      }
+    }
+    while(index1 < list1.size()) {
+      result.add(list1.get(index1));
+      index1 += 1;
+    }
+    while(index2 < list2.size()) {
+      result.add(list2.get(index2));
+      index2 += 1;
+    }
+    return result;
+  }
 
 
+}
+```
+
+# grade.sh
+
+```
+ CPATH='.:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar'
+CPATHNEW='.:../lib/hamcrest-core-1.3.jar:../lib/junit-4.13.2.jar'
+
+rm -rf student-submission
+rm -rf grading-area
+
+mkdir grading-area
+
+echo ""
+
+git clone $1 student-submission
+echo 'Finished cloning'
+
+echo ""
+
+FILEPATH=`find student-submission/ -name ListExamples.java`
+
+
+if [ ! -f "./student-submission/ListExamples.java" ]; then
+    echo "ListExamples.java not in current directory."
+    exit
+
+else
+    echo "ListExamples in current directory."
+fi
+
+echo ""
+
+cp $FILEPATH grading-area
+cp TestListExamples.java grading-area
+echo 'Copy Complete'
+
+echo ""
+
+javac -cp $CPATH grading-area/*.java
+cd grading-area
+java -cp $CPATHNEW org.junit.runner.JUnitCore TestListExamples > testResults.txt
+cd ..
+echo 'Compile and ran'
+
+
+numtest=`grep "@Test" grading-area/TestListExamples.java | wc -l`
+
+if grep "OK" grading-area/testResults.txt; then
+    echo "Score: " $numtest / $numtest
+    exit
+fi
+
+result=`grep "Tests run: " grading-area/testResults.txt`
+
+score=$(($numtest - ${result:(-2)}))
+echo ""
+echo "Score: " $score / $numtest
+```
+
+- The full command line (or lines) you ran to trigger the bug
+  
+```
+FILEPATH=`find student-submission/ -name ListExamples.java`
+
+if [ ! -f "./student-submission/ListExamples.java" ]; then
+    echo "ListExamples.java not in current directory."
+    exit
+
+else
+    echo "ListExamples in current directory."
+fi
+```
+
+- A description of what to edit to fix the bug
+  
+  The file is completely correct code wise, but it is named ListExample.java not ListExamples.java, every single character is important for the autograder.
+
+# Part 2: 
+In the lab, I learned how to troubleshoot problems because I have never worked an environment where I am given instructions and have to complete a task without explicit direction. I liked it because it helped me realize where my strengths and weakness are when it comes to coding. I met a lot of people in lab that helped exercise my teamwork skills, which is important as computer science is heavy on collaboration in the work field. I learned how to utilize my resources, mainly the Internet, when I don't know what to do next given an instruction, whether that be asking A.I. are going on Stack Overflow for advice. My favorite part of the second half of the class was learning how to create an autograder. It is fascinating to create one because of how often we as CSE students use autograders, it is important we know how to read them and know how they work. 
 
 
