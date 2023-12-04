@@ -30,17 +30,18 @@ This will find any java files in your directory, after finding this we can find 
 
    I realized my file was called ListExample.java, without the "s". Thank you for very much this worked.
 
- - The file & directory structure needed:
-     
-        directory needed: student-submission/ListExamples.java
-
-        file needed: ListExamples.java
+#### The file & directory structure needed:
+   
+     directory needed: student-submission/ListExamples.java
+   
+     file needed: ListExamples.java
   
-   - The contents of each file before fixing the bug
+#### The contents of each file before fixing the bug:
 
 # ListExample.java :
 
-``` import java.util.ArrayList;
+```
+import java.util.ArrayList;
 import java.util.List;
 
 interface StringChecker { boolean checkString(String s); }
