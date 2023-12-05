@@ -32,8 +32,11 @@ This will find any java files in your directory, after finding this we can find 
 
 #### The file & directory structure needed:
 
-directory needed: student-submission/ListExamples.java
-
+directory needed: list-examples-grader/student-submission/ListExamples.java
+                  list-examples-grader/grade.sh
+                  lib/hamcrest-core-1.3.jar
+                  lib/junit-4.13.2.jar
+                  
 file needed: ListExamples.java
   
 #### The contents of each file before fixing the bug:
